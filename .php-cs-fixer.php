@@ -15,7 +15,7 @@ return (new PhpCsFixer\Config())
             '@Symfony:risky' => true,
 
             'concat_space' => ['spacing' => 'one'],
-            'native_function_invocation' => ['include' => ['@internal']],
+            'native_function_invocation' => ['include' => ['@internal', 'str_start_with', 'str_contains']],
             'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
             'declare_strict_types' => true,
 

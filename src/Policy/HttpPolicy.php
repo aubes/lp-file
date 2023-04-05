@@ -62,7 +62,7 @@ class HttpPolicy implements PolicyInterface
             throw new PolicyException('Path is not allowed');
         }
 
-        if (!$this->allowDotSegment && str_contains($filename, '../')) {
+        if (!$this->allowDotSegment && \str_contains($filename, '../')) {
             throw new PolicyException('Dot-segments are not allowed');
         }
 
@@ -85,7 +85,7 @@ class HttpPolicy implements PolicyInterface
     protected function validatePath(string $path): bool
     {
         foreach ($this->basePaths as $basePath) {
-            if (str_starts_with($path, $basePath)) {
+            if (\str_starts_with($path, $basePath)) {
                 return true;
             }
         }

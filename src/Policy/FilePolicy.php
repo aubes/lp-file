@@ -48,7 +48,7 @@ class FilePolicy implements PolicyInterface
             throw new PolicyException('Parent directory is not allowed');
         }
 
-        if (str_starts_with($filename, 'file://')) {
+        if (\str_starts_with($filename, 'file://')) {
             $filename = \mb_substr($filename, 7);
         }
 
@@ -64,7 +64,7 @@ class FilePolicy implements PolicyInterface
             throw new PolicyException('File does not exist');
         }
 
-        if (!str_starts_with($realPath, $this->realBaseDirectory)) {
+        if (!\str_starts_with($realPath, $this->realBaseDirectory)) {
             throw new PolicyException('File is outside the base directory');
         }
 
@@ -92,7 +92,7 @@ class FilePolicy implements PolicyInterface
 
     protected function validateParentDirectory(string $filename): bool
     {
-        return $this->allowParentDirectory || (!str_contains($filename, '../') && !str_contains($filename, '..\\'));
+        return $this->allowParentDirectory || (!\str_contains($filename, '../') && !\str_contains($filename, '..\\'));
     }
 
     protected function validateExtensions(?string $extension): bool
